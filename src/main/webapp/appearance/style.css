@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 400;
+}
+
+.pointer {cursor: pointer;}
+
+header::first-letter{
+    font-style: Italic;
+    letter-spacing: 0.1rem;
+    font-size: 150%;
+}
+
+header{
+    font-size: 1.5em;
+    color:#3a2419;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: #9f7963;
+    text-align:start;
+    font-family:  "Monospace";
+}
+
+body{
+    /* Цвет фона */
+    background-color: #cfb4a2;
+    /* Цвет текста */
+    color: #000000;
+    /* Семейство шрифта */
+    font-family:  'Lucida Sans Unicode', sans-serif;
+}
+
+
+#links{
+    /* Является ли маркер частью содержимого музыка */
+    list-style: inside;
+}
+
+a:link {
+    color: #c17a64;
+    background-color: transparent;
+    text-decoration:underline;
+}
+
+a:visited {
+    color: #e9795a;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: larger;
+}
+
+table {
+    /* Задаёт размер внешнего отступа вокруг элемента */
+    margin-top: 20px;
+    margin-left: 20px;
+    /*Выравниваем элемент по вертикали без флексов и гридов */
+    vertical-align: middle;
+}
+
+#R, #X{
+    background-color: #c4947c	;
+    margin-left: 5px;
+    padding-left: 3px;
+    /* Сплошная рамка 3 пикселя определенного цвета */
+    border: solid 1.5px #4a3429	;
+    /*border: outset 1px #342f2d;*/
+    font-family: Lucida Sans Unicode, sans-serif;
+    font-weight: normal;
+}
+
+#Y {
+    background-color: #c4947c;
+    margin-left: 5px;
+    padding-left: 3px;
+    border: solid 1.5px #4a3429	;
+    /*border: outset 1px #342f2d;*/
+    font-family: Lucida Sans Unicode, sans-serif;
+    font-weight: normal;
+}
+
+#check {
+    margin-top: 8px;
+    margin-left: 30%;
+    padding: 5px 10px;
+    border: solid 1.5px #4a3429		;
+    /*border: outset 1px #342f2d;*/
+    background-color: #c4947c;
+    font-family: Lucida Sans Unicode, sans-serif;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+
+#clear {
+    /* margin-left: 20%; */
+    margin-top: 8px;
+    padding: 5px 10px;
+    border: solid 1.5px #4a3429	;
+    /*border: outset 1px #342f2d;*/
+    background-color: #c4947c;
+    font-family: Lucida Sans Unicode, sans-serif;
+    font-weight: normal;
+    font-size: 1.1em;
+
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+#check,#clear{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#results{
+    /* margin-right: 10%; */
+    margin-top: 8px;
+    padding: 5px 10px;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+#heads, #heads>th{
+    background-color: #c4947c;
+    border: solid 1.5px #4a3429	;
+}
+
+button{
+    background-color: #c4947c;
+    border: solid 1.5px #4a3429 ;
+}
+
+#results td{
+    margin-right: 10%;
+    margin-top: 8px;
+    padding: 5px 10px;
+    background-color: #c4947c;
+    border: solid 3px #4a3429	;
+    text-align: center;
+
+}
+
+ul#toBold{
+    font-weight: bold;
+}
+
+p {
+    padding: 1px;
+    font-size: normal;
+}
+
+.validationInfo {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding-right: 80px;
+    text-align: center;
+    font-family: inherit;
+    color: #f24421;
+    opacity: 0;
+    transition: opacity 0.7s;
+}
+
+.validationInfo.show {
+    opacity: 1;
+    transition: opacity 0.7s;
+}
+
+th#heading {
+    font-weight: bold;
+    font-size: large;
+}
+
+.active{
+    background-color: red;
+}
+
+/* label{
+    text-align: center;
+} */
+#data{
+    text-align: center;
+}
