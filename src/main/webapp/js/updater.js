@@ -28,7 +28,7 @@ function sendDataToServer(x, y, r) {
             window.location.replace('result.jsp');
         },
         error: function (xhr, textStatus, err) {
-            alert("AAAA"+"readyState: " + xhr.readyState + "\n" +
+            alert("readyState: " + xhr.readyState + "\n" +
                 "responseText: " + xhr.responseText + "\n" +
                 "status: " + xhr.status + "\n" +
                 "text status: " + textStatus + "\n" +

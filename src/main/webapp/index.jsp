@@ -140,8 +140,6 @@
 <script  src="./js/validator.js"></script>
 <script  src="./js/updater.js"></script>
 <script  src="./js/managers/clickManager.js"></script>
-<%--<script  src="./js/render/render.js"></script>--%>
-<%--<script  src="./js/music/playMusic.js"></script>--%>
 
     <script src="js/validator.js"></script>
     <script src="js/updater.js"></script>
