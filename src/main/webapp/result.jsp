@@ -1,11 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Deskp
-  Date: 18.09.2023
-  Time: 23:19
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -16,8 +12,6 @@
     <title>Lab №2</title>
 
     <link href='appearance/style.css' rel='stylesheet'>
-
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>--%>
 
     <script src="js/validator.js"></script>
     <script src="js/updater.js"></script>

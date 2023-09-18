@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -109,21 +110,33 @@
         <td  colspan="3">
             <form method="POST" novalidate onsubmit="getDataFromForm(); return false">
                 <input class='pointer' id="check" name="check" type="submit" value="Проверить">
-                <input class='pointer' id='clear' type='button' value='Очистить таблицу' onclick='clearTable()'>
             </form>
+            <input class='pointer' id='prevResult' onClick="window.location.replace('result.jsp');" type="reset" onclick="" value="Последний результат" >
+
+            <input class='pointer' id='clear' name='clear' type='button' value='Очистить таблицу' onclick='clearTable()'>
         </td>
     </tr>
     <tr>
         <td colspan=3>
             <table id="results">
-                <tr id="heads">
-                    <th width="10%">X</th>
-                    <th width="10%">Y</th>
-                    <th width="10%">R</th>
-                    <th width="20%">Текущее время</th>
-                    <th width="30%">Время работы скрипта</th>
-                    <th width="40%">Результат</th>
+                <tr>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>R</th>
+                    <th>Текущее время</th>
+                    <th>Время работы программы (мкс)</th>
+                    <th>Результат</th>
                 </tr>
+                <c:forEach items="${dots.collection}" var="col">
+                    <tr>
+                        <td>${col.x.toString().format("%.2f", col.x)}</td>
+                        <td>${col.y.toString().format("%.2f", col.y)}</td>
+                        <td>${col.r.toString().trim().format("%.2f", col.r)}</td>
+                        <td>${col.time.toString()}</td>
+                        <td>${col.scriptTime.toString()}</td>
+                        <td>${col.status.toString()}</td>
+                    </tr>
+                </c:forEach>
             </table>
         </td>
     </tr>

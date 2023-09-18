@@ -108,9 +108,21 @@ table {
     font-weight: normal;
     font-size: 1.1em;
 
+}
+#prevResult{
     display: flex;
     margin-left: auto;
     margin-right: auto;
+
+    /* margin-left: 20%; */
+    margin-top: 8px;
+    padding: 5px 10px;
+    border: solid 1.5px #4a3429	;
+    /*border: outset 1px #342f2d;*/
+    background-color: #c4947c;
+    font-family: Lucida Sans Unicode, sans-serif;
+    font-weight: normal;
+    font-size: 1.1em;
 }
 #check,#clear{
     display: flex;
