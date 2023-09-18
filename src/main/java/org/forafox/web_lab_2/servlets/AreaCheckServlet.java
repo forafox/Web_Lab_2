@@ -1,17 +1,18 @@
 package org.forafox.web_lab_2.servlets;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.forafox.web_lab_2.entities.Dot;
 import org.forafox.web_lab_2.entities.DotCollectionManager;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import static java.time.temporal.ChronoUnit.MINUTES;
 
 @WebServlet(name= "area-check-servlet", value = "/area-check-servlet")
@@ -56,7 +57,7 @@ public class AreaCheckServlet extends HttpServlet {
             printWriter.write(responseBody);
             printWriter.flush();
         } catch (NumberFormatException e) {
-           //ignore code
+            //ignore code
         }
     }
 
