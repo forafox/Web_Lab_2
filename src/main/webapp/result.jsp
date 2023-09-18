@@ -48,4 +48,6 @@
     </div>
 </div>
 </body>
+
+<script src="./js/render/render.js"></script>
 </html>

@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +20,7 @@
     Карабанов Андрей Фёдорович, Р3115, Вариант 2510
 </header>
 
-<body>
+<body onload="draw()">
 <table id="main">
     <tr id>
         <th colspan=3>
@@ -50,7 +49,7 @@
             </ol>
             <h3>Ссылки</h3>
             <ul>
-                <li><a class="pointer" href="https://github.com/forafox/Web_Lab_1">Исходный код</a></li>
+                <li><a class="pointer" href="https://github.com/forafox/Web_Lab_2">Исходный код</a></li>
             </ul>
         </td>
         <td id="data" width="40%">
@@ -153,7 +152,7 @@
 <script  src="./js/validator.js"></script>
 <script  src="./js/updater.js"></script>
 <script  src="./js/managers/clickManager.js"></script>
-
+<script src="./js/render/render.js"></script>
     <script src="js/validator.js"></script>
     <script src="js/updater.js"></script>
     <script src="js/clearTable.js"></script>

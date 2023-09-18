@@ -63,16 +63,16 @@ public class AreaCheckServlet extends HttpServlet {
 
 
     private String isHit(double x,double y,double r){
-        return (isCircleZone(x,y,r) || isTriangleZone(x,y,r) || isRectangleZone(x,y,r)) ?  "Попадание!" : "Промах!";
+        return (isCircleZone(x,y,r) || isTriangleZone(x,y,r) || isRectangleZone(x,y,r)) ?  "Hit!" : "Miss!";
     }
 
     private boolean isRectangleZone(double x,double y,double r){
-        return true;
+        return (x>=0) && (x<=r/2) && (y>=0) && (y<=r);
     }
     private boolean isCircleZone(double x,double y,double r){
-        return true;
+        return (x*x + y*y <=r/2*r/2) && (x<=0) && (y<=0);
     }
     private boolean isTriangleZone(double x,double y,double r){
-        return true;
+        return (x>=0) && (y<=0) && (true);
     }
 }
