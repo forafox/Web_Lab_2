@@ -7,6 +7,7 @@
 <%
     DotStore store = new HttpSessionDotStore();
     List<Dot> dots = store.getCollection(session);
+    boolean isHaveResult=dots.isEmpty();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,7 +119,7 @@
             <form method="POST" novalidate onsubmit="getDataFromForm(); return false">
                 <input class='pointer' id="check" name="check" type="submit" value="Проверить">
             </form>
-            <input class='pointer' id='prevResult' onClick="window.location.replace('result.jsp');" type="reset" onclick="" value="Последний результат" >
+            <input class='pointer' id='prevResult' type="button" value="Последний результат" onclick="checkHaveResult(test)">
 
             <input class='pointer' id='clear' name='clear' type='button' value='Очистить таблицу' onclick='clearTable()'>
         </td>
@@ -155,6 +156,10 @@
 </table>
 </table>
 </body>
+
+<script>
+    const test='<%=isHaveResult%>';
+</script>
 
 <script src="js/managers/clickManager.js"></script>
 

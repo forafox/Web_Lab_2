@@ -35,3 +35,12 @@ function sendDataToServer(x, y, r) {
         }
     });
 }
+
+function checkHaveResult(flag){
+    console.log(flag,"checkHaveResult");
+    if(flag==='false'){
+        window.location.replace('result.jsp');
+    }else{
+        alert("Результатов нет!")
+    }
+}

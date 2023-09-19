@@ -1,3 +1,6 @@
+/*бежевый (#DDD0C8);*/
+/*темно-серый (#323232).*/
+/*/5d5050*/
 *{
     margin: 0;
     padding: 0;
@@ -25,11 +28,8 @@ header{
 }
 
 body{
-    /* Цвет фона */
     background-color: #cfb4a2;
-    /* Цвет текста */
     color: #000000;
-    /* Семейство шрифта */
     font-family:  'Lucida Sans Unicode', sans-serif;
 }
 
@@ -64,89 +64,48 @@ table {
     vertical-align: middle;
 }
 
-#R, #X{
+#R, #X, #Y{
     background-color: #c4947c	;
     margin-left: 5px;
     padding-left: 3px;
-    /* Сплошная рамка 3 пикселя определенного цвета */
-    border: solid 1.5px #4a3429	;
-    /*border: outset 1px #342f2d;*/
+    border: solid 1.5px #4a3429;
     font-family: Lucida Sans Unicode, sans-serif;
     font-weight: normal;
 }
-
-#Y {
-    background-color: #c4947c;
-    margin-left: 5px;
-    padding-left: 3px;
-    border: solid 1.5px #4a3429	;
-    /*border: outset 1px #342f2d;*/
-    font-family: Lucida Sans Unicode, sans-serif;
-    font-weight: normal;
-}
-
-#check {
-    margin-top: 8px;
-    margin-left: 30%;
-    padding: 5px 10px;
-    border: solid 1.5px #4a3429		;
-    /*border: outset 1px #342f2d;*/
-    background-color: #c4947c;
-    font-family: Lucida Sans Unicode, sans-serif;
-    font-weight: normal;
+#check,#clear,#prevResult{
     font-size: 1.1em;
-}
-
-#clear {
-    /* margin-left: 20%; */
-    margin-top: 8px;
     padding: 5px 10px;
-    border: solid 1.5px #4a3429	;
-    /*border: outset 1px #342f2d;*/
-    background-color: #c4947c;
-    font-family: Lucida Sans Unicode, sans-serif;
-    font-weight: normal;
-    font-size: 1.1em;
-
-}
-#prevResult{
+    margin-top: 8px;
     display: flex;
     margin-left: auto;
     margin-right: auto;
-
-    /* margin-left: 20%; */
-    margin-top: 8px;
-    padding: 5px 10px;
-    border: solid 1.5px #4a3429	;
-    /*border: outset 1px #342f2d;*/
-    background-color: #c4947c;
-    font-family: Lucida Sans Unicode, sans-serif;
     font-weight: normal;
-    font-size: 1.1em;
-}
-#check,#clear{
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    border: solid 1.5px #4a3429;
+    font-family: Lucida Sans Unicode, sans-serif;
 }
 
 #results{
-    /* margin-right: 10%; */
-    margin-top: 8px;
+    margin-top: 5px;
     padding: 5px 10px;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-
-
 }
 
 #heads, #heads>th{
     background-color: #c4947c;
     border: solid 1.5px #4a3429	;
 }
+.pointer{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
-button{
+button,.pointer{
     background-color: #c4947c;
     border: solid 1.5px #4a3429 ;
 }
@@ -196,10 +155,6 @@ th#heading {
 .active{
     background-color: red;
 }
-
-/* label{
-    text-align: center;
-} */
 #data{
     text-align: center;
 }
