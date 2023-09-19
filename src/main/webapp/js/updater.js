@@ -14,7 +14,6 @@ function getDataFromForm(){
 }
 
 function sendDataToServer(x, y, r) {
-    console.log("IN send Data TO SERVER,x,y,r",x, y, r);
     $.ajax({
         type: "GET",
         url: "controller-servlet",

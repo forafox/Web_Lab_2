@@ -1,7 +1,14 @@
+<%@ page import="org.forafox.web_lab_2.entities.DotStore" %>
+<%@ page import="org.forafox.web_lab_2.entities.HttpSessionDotStore" %>
+<%@ page import="org.forafox.web_lab_2.entities.Dot" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%
+    DotStore store = new HttpSessionDotStore();
+    Dot lastDot = store.getLast(session);
+%>
 
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -21,7 +28,9 @@
 <div class="back-container">
     <div class="prev-result-container">
         <div id="back-button">
-            <button class='pointer' id='prevResult' onClick="window.location.replace('index.jsp');" type="reset" onclick="">Назад</button>
+            <button class='pointer' id='prevResult' onClick="window.location.replace('index.jsp');" type="reset"
+                    onclick="">Назад
+            </button>
         </div>
         <div id="prev-result-table">
             <table id="results">
@@ -34,14 +43,14 @@
                     <th>Результат</th>
                 </tr>
                 <tr>
-                    <c:if test="${not empty dots.collection}">
-                        <td>${dots.last.x.toString().format("%.2f", dots.last.x)}</td>
-                        <td>${dots.last.y.toString().format("%.2f", dots.last.x)}</td>
-                        <td>${dots.last.r.toString().format("%.2f", dots.last.r)}</td>
-                        <td>${dots.last.time}</td>
-                        <td>${dots.last.scriptTime}</td>
-                        <td>${dots.last.status}</td>
-                    </c:if>
+                    <%
+                        out.println(String.format("<td> %.2f </td>", lastDot.x()));
+                        out.println(String.format("<td>%.2f</td>", lastDot.y()));
+                        out.println(String.format("<td>%.2f</td>", lastDot.r()));
+                        out.println(String.format("<td>%s</td>", lastDot.time()));
+                        out.println(String.format("<td>%s</td>", lastDot.scriptTime()));
+                        out.println(String.format("<td>%s</td>", lastDot.status()));
+                    %>
                 </tr>
             </table>
         </div>

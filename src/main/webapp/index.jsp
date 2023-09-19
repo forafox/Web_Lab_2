@@ -1,5 +1,13 @@
+<%@ page import="org.forafox.web_lab_2.entities.Dot" %>
+<%@ page import="org.forafox.web_lab_2.entities.DotStore" %>
+<%@ page import="org.forafox.web_lab_2.entities.HttpSessionDotStore" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    DotStore store = new HttpSessionDotStore();
+    List<Dot> dots = store.getCollection(session);
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,16 +134,18 @@
                     <th>Время работы программы (мкс)</th>
                     <th>Результат</th>
                 </tr>
-                <c:forEach items="${dots.collection}" var="col">
-                    <tr>
-                        <td>${col.x.toString().format("%.2f", col.x)}</td>
-                        <td>${col.y.toString().format("%.2f", col.y)}</td>
-                        <td>${col.r.toString().trim().format("%.2f", col.r)}</td>
-                        <td>${col.time.toString()}</td>
-                        <td>${col.scriptTime.toString()}</td>
-                        <td>${col.status.toString()}</td>
-                    </tr>
-                </c:forEach>
+                <%
+                    for(Dot dot: dots) {
+                        out.println("<tr>");
+                        out.println(String.format("<td> %.2f </td>", dot.x()));
+                        out.println(String.format("<td>%.2f</td>", dot.y()));
+                        out.println(String.format("<td>%.2f</td>", dot.r()));
+                        out.println(String.format("<td>%s</td>", dot.time()));
+                        out.println(String.format("<td>%s</td>", dot.scriptTime()));
+                        out.println(String.format("<td>%s</td>", dot.status()));
+                        out.println("</tr>");
+                    }
+                %>
             </table>
         </td>
     </tr>
