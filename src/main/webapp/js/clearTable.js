@@ -13,6 +13,7 @@ function clearTable() {
                 <th>Результат</th>
             </tr>`);
             $('.dot').remove();
+            hasResults = false;
         },
         error: function (xhr, textStatus, err) {
             alert("readyState: " + xhr.readyState + "\n" +

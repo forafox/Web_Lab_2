@@ -2,12 +2,17 @@
 <%@ page import="org.forafox.web_lab_2.entities.DotStore" %>
 <%@ page import="org.forafox.web_lab_2.entities.HttpSessionDotStore" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.stream.Collectors" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     DotStore store = new HttpSessionDotStore();
     List<Dot> dots = store.getCollection(session);
-    boolean isHaveResult=dots.isEmpty();
+    boolean isHaveResult = !dots.isEmpty();
+    String dotsJson = dots.stream()
+            .map(Dot::toJSON)
+            .collect(Collectors.toList())
+            .toString();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +34,7 @@
     Карабанов Андрей Фёдорович, Р3115, Вариант 2510
 </header>
 
-<body onload="draw()">
+<body onload="drawWithList(dots)">
 <table id="main">
     <tr id>
         <th colspan=3>
@@ -53,12 +58,12 @@
             <h3>Правила использования</h3>
             <ol>
                 <li>Введите значение параметра R.</li>
-                <li>Введите коордиты точки. </li>
-                <li>Дождитесь ответа. </li>
+                <li>Введите коордиты точки.</li>
+                <li>Дождитесь ответа.</li>
             </ol>
             <h3>Ссылки</h3>
             <ul>
-                <li><a class="pointer" href="https://github.com/forafox/Web_Lab_2">Исходный код</a></li>
+                <li><a class="pointer2" href="https://github.com/forafox/Web_Lab_2">Исходный код</a></li>
             </ul>
         </td>
         <td id="data" width="40%">
@@ -74,7 +79,7 @@
             <div>
                 <label for='X' id="X">Выберите X:</label>
                 <div>
-                    <button type="button" class="btn-x" value="-4" >-4</button>
+                    <button type="button" class="btn-x" value="-4">-4</button>
                     <button type="button" class="btn-x" value="-3">-3</button>
                     <button type="button" class="btn-x" value="-2">-2</button>
                     <button type="button" class="btn-x" value="-1">-1</button>
@@ -82,7 +87,7 @@
                     <button type="button" class="btn-x" value="1">1</button>
                     <button type="button" class="btn-x" value="2">2</button>
                     <button type="button" class="btn-x" value="3">3</button>
-                    <button type="button" class="btn-x" value="4" >4</button>
+                    <button type="button" class="btn-x" value="4">4</button>
                 </div>
             </div>
 
@@ -90,7 +95,7 @@
             <div>
                 <label for='R' id="R">Выберите R:</label>
                 <div>
-                    <button type="button-r" class="btn-r" value="1" >1</button>
+                    <button type="button-r" class="btn-r" value="1">1</button>
                     <button type="button-r" class="btn-r" value="2">2</button>
                     <button type="button-r" class="btn-r" value="3">3</button>
                     <button type="button-r" class="btn-r" value="4">4</button>
@@ -105,7 +110,6 @@
         </td>
 
 
-
         <td id="area" width="30%">
             <section id="coordinate-system">
                 <div class="canvas-form">
@@ -115,13 +119,15 @@
         </td>
     </tr>
     <tr>
-        <td  colspan="3">
+        <td colspan="3">
             <form method="POST" novalidate onsubmit="getDataFromForm(); return false">
                 <input class='pointer' id="check" name="check" type="submit" value="Проверить">
             </form>
-            <input class='pointer' id='prevResult' type="button" value="Последний результат" onclick="checkHaveResult(test)">
+            <input class='pointer' id='prevResult' type="button" value="Последний результат"
+                   onclick="checkHaveResult(hasResults)">
 
-            <input class='pointer' id='clear' name='clear' type='button' value='Очистить таблицу' onclick='clearTable()'>
+            <input class='pointer' id='clear' name='clear' type='button' value='Очистить таблицу'
+                   onclick='clearTable()'>
         </td>
     </tr>
     <tr>
@@ -136,7 +142,7 @@
                     <th>Результат</th>
                 </tr>
                 <%
-                    for(Dot dot: dots) {
+                    for (Dot dot : dots) {
                         out.println("<tr>");
                         out.println(String.format("<td> %.2f </td>", dot.x()));
                         out.println(String.format("<td>%.2f</td>", dot.y()));
@@ -158,19 +164,22 @@
 </body>
 
 <script>
-    const test='<%=isHaveResult%>';
+    let hasResults = <%=isHaveResult%>;
+    const dots = JSON.parse(`<%=dotsJson%>`);
+    // const JsonDots = JSON.stringify(dots);
+    console.log(dots);
 </script>
 
 <script src="js/managers/clickManager.js"></script>
 
-<script  src="./js/clearTable.js"></script>
-<script  src="./js/validator.js"></script>
-<script  src="./js/updater.js"></script>
-<script  src="./js/managers/clickManager.js"></script>
+<script src="./js/clearTable.js"></script>
+<script src="./js/validator.js"></script>
+<script src="./js/updater.js"></script>
+<script src="./js/managers/clickManager.js"></script>
 <script src="./js/render/render.js"></script>
-    <script src="js/validator.js"></script>
-    <script src="js/updater.js"></script>
-    <script src="js/clearTable.js"></script>
+<script src="js/validator.js"></script>
+<script src="js/updater.js"></script>
+<script src="js/clearTable.js"></script>
 
 
 </html>

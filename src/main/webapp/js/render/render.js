@@ -1,31 +1,32 @@
 const canvas = document.getElementById("canvas");
 let defaultR=5;
 
-function draw(r, pointxVal, pointyVal, flag) {
-    if (canvas.getContext) {
-        const ctx = canvas.getContext("2d");
-        const size = 300;
-        canvas.setAttribute("width", size.toString());
-        canvas.setAttribute("height", size.toString());
-        if (r === undefined) {
-            r = defaultR;
-        }
-
-        drawPolygon(ctx, size, r);
-        drawAxes(ctx, size);
-        drawText(ctx, size, r);
-
-        if (pointxVal && pointyVal) {
-            drawPoint(ctx, size, pointxVal, pointyVal, flag)
-            document.dispatchEvent(createMusicEvent());
-        }
-
-    } else {
-        alert("Canvas - unsupport");
-        //canvas-unsupported code
-    }
-}
+// function draw(r, pointxVal, pointyVal, flag) {
+//     if (canvas.getContext) {
+//         const ctx = canvas.getContext("2d");
+//         const size = 300;
+//         canvas.setAttribute("width", size.toString());
+//         canvas.setAttribute("height", size.toString());
+//         if (r === undefined) {
+//             r = defaultR;
+//         }
+//
+//         drawPolygon(ctx, size, r);
+//         drawAxes(ctx, size);
+//         drawText(ctx, size, r);
+//
+//         if (pointxVal && pointyVal) {
+//             drawPoint(ctx, size, pointxVal, pointyVal, flag)
+//             document.dispatchEvent(createMusicEvent());
+//         }
+//
+//     } else {
+//         alert("Canvas - unsupport");
+//         //canvas-unsupported code
+//     }
+// }
 function drawPolygon(ctx, size, r) {
+    console.log("In drawPolygon")
     let totalPoints = 12;
     let pointInPixels = size / totalPoints;
     //draw rect
@@ -46,6 +47,7 @@ function drawPolygon(ctx, size, r) {
 }
 //Прорисовка осей координат
 function drawAxes(ctx, size) {
+    console.log("In drawAxes")
     ctx.fillStyle = "black";
     ctx.fillRect(0, size / 2, size, 1);
     ctx.fillRect(size / 2, 0, 1, size);
@@ -53,6 +55,7 @@ function drawAxes(ctx, size) {
 
 //Подписи для осей
 function drawText(ctx, size, r) {
+    console.log("In drawText")
     let totalPoints = 12;
     let pointInPixels = size / totalPoints;
     ctx.fillStyle = "black";
@@ -72,8 +75,9 @@ function drawText(ctx, size, r) {
 
 }
 
-function drawPoint(ctx, size, xVal, yVal, flag) {
-    if (flag === 'true') {
+function drawPoint(ctx, size, xVal, yVal, flag){
+    console.log("In drawPoint")
+    if (flag === 'Hit!') {
         ctx.fillStyle = "Blue";
     } else {
         ctx.fillStyle = "red";
@@ -86,9 +90,37 @@ function drawPoint(ctx, size, xVal, yVal, flag) {
     return true;
 }
 
-function createMusicEvent(){
-    let event = new MouseEvent("playMusic", {
-    });
-    event.flag = `${flag}`;
-    return event;
+// function createMusicEvent(){
+//     let event = new MouseEvent("playMusic", {
+//     });
+//     event.flag = `${flag}`;
+//     return event;
+// }
+
+function drawWithList(list){
+    console.log("In drawWithList")
+    const r=5;
+    const size = 300;
+    if (canvas.getContext) {
+        const ctx = canvas.getContext("2d");
+        canvas.setAttribute("width", size.toString());
+        canvas.setAttribute("height", size.toString());
+
+        drawPolygon(ctx, size, r);
+        drawAxes(ctx, size);
+        drawText(ctx, size, r);
+
+        if(list.length>=5){
+            list=list.slice(-5,list.length);
+        }
+        list.forEach((dot) => {
+            console.log(dot.x,dot.y)
+                drawPoint(ctx, size, dot.x, dot.y, dot.status)
+                // document.dispatchEvent(createMusicEvent());
+        });
+
+    } else {
+        alert("Canvas - unsupport");
+        //canvas-unsupported code
+    }
 }

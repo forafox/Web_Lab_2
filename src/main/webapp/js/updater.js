@@ -1,4 +1,4 @@
-function getDataFromForm(){
+function getDataFromForm() {
 
     updateValidationPanel();
 
@@ -7,8 +7,7 @@ function getDataFromForm(){
         let y = getYValue();
         let r = getRValue();
         sendDataToServer(x, y, r);
-    }
-    else{
+    } else {
         console.log("something gone wrong! check values!");
     }
 }
@@ -36,11 +35,10 @@ function sendDataToServer(x, y, r) {
     });
 }
 
-function checkHaveResult(flag){
-    console.log(flag,"checkHaveResult");
-    if(flag==='false'){
+function checkHaveResult(flag) {
+    if (flag) {
         window.location.replace('result.jsp');
-    }else{
+    } else {
         alert("Результатов нет!")
     }
 }
