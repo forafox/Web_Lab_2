@@ -124,3 +124,20 @@ function drawWithList(list){
         //canvas-unsupported code
     }
 }
+
+canvas.addEventListener("click",(e) =>{
+    let elementRelativeX = e.offsetX;
+    let elementRelativeY = e.offsetY;
+    let canvasRelativeX = elementRelativeX * canvas.width/canvas.clientWidth;
+    let canvasRelativeY = elementRelativeY *canvas.height/canvas.clientHeight;
+    if(canvasRelativeY<=150){
+        console.log("y",Math.round(5-(canvasRelativeY-25)/25));
+    }else{
+        console.log('y',-(Math.round((canvasRelativeY-150)/25)));
+    }
+    if(canvasRelativeX<=150){
+        console.log('x',-(Math.round(5-(canvasRelativeX-40)/22)));
+    }else{
+        console.log('x',Math.round(canvasRelativeX-150)/22);
+    }
+})

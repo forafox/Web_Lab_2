@@ -166,8 +166,6 @@
 <script>
     let hasResults = <%=isHaveResult%>;
     const dots = JSON.parse(`<%=dotsJson%>`);
-    // const JsonDots = JSON.stringify(dots);
-    console.log(dots);
 </script>
 
 <script src="js/managers/clickManager.js"></script>
