@@ -1,6 +1,5 @@
 package org.forafox.web_lab_2.servlets;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,10 +22,8 @@ public class AreaCheckServlet extends HttpServlet {
     private final DotStore store = new HttpSessionDotStore();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter printWriter = resp.getWriter();
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)  throws IOException {
         long timer = System.nanoTime();
-        HttpSession session = req.getSession();
         try {
             float x = Float.parseFloat(req.getParameter("x-value"));
             float y = Float.parseFloat(req.getParameter("y-value"));
@@ -35,35 +32,46 @@ public class AreaCheckServlet extends HttpServlet {
             log("Y: " + y);
             log("R: " + r);
 
-            String status = isHit(x, y, r);
-
-            int timeZone = Integer.parseInt(req.getParameter("timezone"));
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-            String currentTime = formatter.format(LocalDateTime.now().plus(timeZone, MINUTES));
-            long scriptTime = (long) ((System.nanoTime() - timer) * 0.001);
-
-            //
-            Object collection = getServletContext().getAttribute("dots");
-
-            Dot newDot = new Dot(x, y, r, currentTime, scriptTime, status);
-            store.add(newDot, session);
-            log("Shot successfully added");
-
-            List<Dot> dots = store.getCollection(session);
-            getServletContext().setAttribute("dots", dots);
-
-            String responseBody = newDot.toJSON();
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            printWriter.write(responseBody);
-            printWriter.flush();
+            if(validationOnArea(x,y,r)){
+                createResult(req,resp,timer,x,y,r);
+            }else{
+                log("data is incorrect");
+            }
         } catch (NumberFormatException e) {
-            //ignore code
+            log("NumberFormatException");
         }
     }
 
+    private void createResult(HttpServletRequest req,HttpServletResponse resp,long timer,float x,float y,float r) throws IOException {
+        HttpSession session = req.getSession();
+        PrintWriter printWriter = resp.getWriter();
+        String status = isHit(x, y, r);
+
+        int timeZone = Integer.parseInt(req.getParameter("timezone"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String currentTime = formatter.format(LocalDateTime.now().plus(timeZone, MINUTES));
+        long scriptTime = (long) ((System.nanoTime() - timer) * 0.001);
+
+        Object collection = getServletContext().getAttribute("dots");
+
+        Dot newDot = new Dot(x, y, r, currentTime, scriptTime, status);
+        store.add(newDot, session);
+        log("Shot successfully added");
+
+        List<Dot> dots = store.getCollection(session);
+        getServletContext().setAttribute("dots", dots);
+
+        String responseBody = newDot.toJSON();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        printWriter.write(responseBody);
+        printWriter.flush();
+    }
 
 
+    private boolean validationOnArea(double x,double y,double r){
+        return ((x>=-5 && x<=5) && (y>=-5 && y<=5) && (r>=1 && r<=5));
+    }
     private String isHit(double x, double y, double r) {
         return (isCircleZone(x, y, r) || isTriangleZone(x, y, r) || isRectangleZone(x, y, r)) ? "Hit!" : "Miss!";
     }
@@ -78,6 +86,9 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private boolean isTriangleZone(double x, double y, double r) {
-        return (x >= 0) && (y <= 0) && (true);
+        double a1 = (r/2 - x) * (-r - 0) - (0 - r/2) * (0 - y);
+        double a2 = (0 - x) * (0 + r) - (0 - 0) * (-r - y);
+        double a3 = (0 - x) * (0 - 0) - (r - 0) * (0 - y);
+        return ((x>=0) && (y<=0) && (a1 >= 0 && a2 >= 0 && a3 >= 0) || (a1 <= 0 && a2 <= 0 && a3 <= 0));
     }
 }
