@@ -3,10 +3,18 @@
 /*/5d5050*/
 *{
     margin: 0;
-    padding: 0;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 0px;
     font-weight: 400;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+nav {
+    width: 80%;
+    margin: 0 auto;
 }
 
 .pointer {cursor: pointer;}
@@ -24,7 +32,7 @@ header{
     padding-bottom: 1%;
     background-color: #9f7963;
     text-align:start;
-    font-family:  "Monospace";
+    font-family: monospace;
 }
 
 body{
@@ -57,28 +65,22 @@ h1 {
 }
 
 table {
-    /* Задаёт размер внешнего отступа вокруг элемента */
     margin-top: 20px;
     margin-left: 20px;
-    /*Выравниваем элемент по вертикали без флексов и гридов */
     vertical-align: middle;
 }
 
 #R, #X, #Y{
-    background-color: #c4947c	;
-    margin-left: 5px;
-    padding-left: 3px;
-    border: solid 1.5px #4a3429;
+
+    /*margin: 8px;*/
     font-family: Lucida Sans Unicode, sans-serif;
-    font-weight: normal;
+    /*font-weight: normal;*/
+    /*padding-top: 2;*/
 }
 #check,#clear,#prevResult{
     font-size: 1.1em;
     padding: 5px 10px;
-    margin-top: 8px;
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
     font-weight: normal;
     border: solid 1.5px #4a3429;
     font-family: Lucida Sans Unicode, sans-serif;
@@ -105,9 +107,16 @@ input{
     margin-bottom: 5px;
 }
 
+input#Y {
+    padding-left: 3px;
+    background-color: #c4947c	;
+    border: solid 2px #4a3429;
+}
+
 button,.pointer{
     background-color: #c4947c;
     border: solid 1.5px #4a3429 ;
+    padding: 4px 8px;
 }
 
 #results td{
@@ -116,7 +125,7 @@ button,.pointer{
     padding: 5px 10px;
     background-color: #c4947c;
     border: solid 3px #4a3429	;
-    text-align: center;
+    /*text-align: center;*/
 
 }
 
@@ -126,16 +135,13 @@ ul#toBold{
 
 p {
     padding: 1px;
-    font-size: normal;
+    font-size: 1rem;
 }
 
 .validationInfo {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1%;
-    margin-top: 1%;
+    margin: 1% auto;
     padding-right: 80px;
-    text-align: center;
+    /*text-align: center;*/
     font-family: inherit;
     color: #f24421;
     opacity: 0;
@@ -156,5 +162,53 @@ th#heading {
     background-color: red;
 }
 #data{
-    text-align: center;
+    /*text-align: center;*/
+}
+#threeButtonsWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#threeButtonsWrapper > * {
+    margin: 0 8px;
+}
+
+#xButtons > button, #rButtons > button {
+    margin-left: 16px;
+    width: 32px;
+    height: 32px;
+}
+
+#xButtons > button:first-child, #rButtons > button:first-child {
+    margin-left: 0px;
+}
+
+#xButtons, #rButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /*width: 60%;*/
+    /*transform: scaleX(150%);*/
+}
+
+#data {
+    display: flex;
+    flex-direction: column;
+}
+
+#data > div {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+#data > div > * {
+    margin-top: 8px;
+}
+
+#back-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

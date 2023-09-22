@@ -9,6 +9,7 @@ $('.btn-x').on('click', function () {
 $('.btn-r').on('click',function () {
     $(this).addClass('active').siblings().removeClass('active');
     selectedR = $(this).attr("value");
+    updateList();
 })
 
 function getRValue(){

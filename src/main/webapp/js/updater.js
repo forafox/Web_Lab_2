@@ -12,6 +12,20 @@ function getDataFromForm() {
     }
 }
 
+function getDataFromFormAndClick(x,y){
+    updateValidationPanel();
+
+    if (validateXValue(x) && validateYValue(y) && validateRValue(getRValue())) {
+        let r = getRValue();
+        sendDataToServer(x, y, r);
+        return true
+    } else {
+        console.log("something gone wrong! check values!");
+        return false
+    }
+
+}
+
 function sendDataToServer(x, y, r) {
     $.ajax({
         type: "GET",

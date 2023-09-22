@@ -14,6 +14,8 @@ function clearTable() {
             </tr>`);
             $('.dot').remove();
             hasResults = false;
+            currentList=0;
+            updateList();
         },
         error: function (xhr, textStatus, err) {
             alert("readyState: " + xhr.readyState + "\n" +

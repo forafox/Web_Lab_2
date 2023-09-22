@@ -1,5 +1,6 @@
 const canvas = document.getElementById("canvas");
 let defaultR=5;
+let currentList;
 
 // function draw(r, pointxVal, pointyVal, flag) {
 //     if (canvas.getContext) {
@@ -79,7 +80,10 @@ function drawPoint(ctx, size, xVal, yVal, flag){
     console.log("In drawPoint")
     if (flag === 'Hit!') {
         ctx.fillStyle = "Blue";
-    } else {
+    }else if(flag==="timePoint"){
+        ctx.fillStyle="green";
+    }
+    else {
         ctx.fillStyle = "red";
     }
     let totalPoints = 12;
@@ -96,48 +100,67 @@ function drawPoint(ctx, size, xVal, yVal, flag){
 //     event.flag = `${flag}`;
 //     return event;
 // }
-
-function drawWithList(list){
-    console.log("In drawWithList")
-    const r=5;
-    const size = 300;
+function updateList(){
+    drawWithList(currentList);
+}
+function drawWithList(list) {
+    currentList = list;
+    console.log("R", getRValue());
     if (canvas.getContext) {
+        // const r=5;
+        const size = 300;
+
+        let r = getRValue();
+
         const ctx = canvas.getContext("2d");
         canvas.setAttribute("width", size.toString());
         canvas.setAttribute("height", size.toString());
 
+        if (r === undefined || r === 0 || r === null) {
+            r = defaultR;
+        }
+
         drawPolygon(ctx, size, r);
         drawAxes(ctx, size);
         drawText(ctx, size, r);
-
-        if(list.length>=5){
-            list=list.slice(-5,list.length);
-        }
-        list.forEach((dot) => {
-            console.log(dot.x,dot.y)
+        if (list !== 0 && list !== null && list !== undefined) {
+            if (list.length >= 5) {
+                list = list.slice(-5, list.length);
+            }
+            list.forEach((dot) => {
+                console.log(dot.x, dot.y)
                 drawPoint(ctx, size, dot.x, dot.y, dot.status)
                 // document.dispatchEvent(createMusicEvent());
-        });
+            });
 
-    } else {
-        alert("Canvas - unsupport");
-        //canvas-unsupported code
-    }
+        }
+    }else {
+            alert("Canvas - unsupport");
+            //canvas-unsupported code
+        }
 }
 
 canvas.addEventListener("click",(e) =>{
+    let finalX=0;
+    let finalY=0;
     let elementRelativeX = e.offsetX;
     let elementRelativeY = e.offsetY;
     let canvasRelativeX = elementRelativeX * canvas.width/canvas.clientWidth;
     let canvasRelativeY = elementRelativeY *canvas.height/canvas.clientHeight;
     if(canvasRelativeY<=150){
-        console.log("y",Math.round(5-(canvasRelativeY-25)/25));
+        finalY=Math.round(defaultR-(canvasRelativeY-25)/25);
     }else{
-        console.log('y',-(Math.round((canvasRelativeY-150)/25)));
+        finalY=(-(Math.round((canvasRelativeY-150)/25)))
     }
     if(canvasRelativeX<=150){
-        console.log('x',-(Math.round(5-(canvasRelativeX-40)/22)));
+        finalX=(-(Math.round(defaultR-(canvasRelativeX-40)/22)))
     }else{
-        console.log('x',Math.round(canvasRelativeX-150)/22);
+        finalX=Math.round((canvasRelativeX-150)/22);
     }
+    if(getDataFromFormAndClick(finalX,finalY)){
+        console.log("Точка успешно поставлена!")
+    }else{
+        console.log("Точка не поставлена");
+    }
+
 })

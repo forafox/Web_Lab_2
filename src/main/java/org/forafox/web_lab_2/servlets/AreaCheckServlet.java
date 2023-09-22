@@ -63,6 +63,7 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
 
+
     private String isHit(double x, double y, double r) {
         return (isCircleZone(x, y, r) || isTriangleZone(x, y, r) || isRectangleZone(x, y, r)) ? "Hit!" : "Miss!";
     }
@@ -72,7 +73,8 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private boolean isCircleZone(double x, double y, double r) {
-        return (x * x + y * y <= r / 2 * r / 2) && (x <= 0) && (y <= 0);
+        System.out.println(String.format(""));
+        return (x * x + y * y <= r * r) && (x <= 0) && (y <= 0);
     }
 
     private boolean isTriangleZone(double x, double y, double r) {
