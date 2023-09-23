@@ -2,11 +2,13 @@
 
 [С лаборатороной работой нельзя ознакомиться туть]()
 
-         1         |         2
-|:-------------------------:|:-------------------------:|
-![](https://github.com/forafox/Web_Lab_2/blob/master/images/index.png)           | ![](https://github.com/forafox/Web_Lab_2/blob/master/images/resultOnIndex.png)
-![](https://github.com/forafox/Web_Lab_2/blob/master/images/resultOnIndex2+.png)           | ![](https://github.com/forafox/Web_Lab_2/blob/master/images/result.png)
-## Содержание проекта
+
+
+Left part             |  Right part
+:-------------------------:|:-------------------------:
+![](https://github.com/forafox/Web_Lab_2/blob/master/images/index.png)  |  ![](https://github.com/forafox/Web_Lab_2/blob/master/images/resultOnIndex.png)
+![](https://github.com/forafox/Web_Lab_2/blob/master/images/resultOnIndex2.png)   |  ![](https://github.com/forafox/Web_Lab_2/blob/master/images/result.png)
+
 
 Разработано веб-приложение на базе сервлетов и JSP, определяющее попадание точки на координатной плоскости в заданную область.
 
