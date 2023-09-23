@@ -2,7 +2,7 @@
 <%@ page import="org.forafox.web_lab_2.entities.HttpSessionDotStore" %>
 <%@ page import="org.forafox.web_lab_2.entities.Dot" %>
 <%@ page import="java.util.List" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%
     DotStore store = new HttpSessionDotStore();

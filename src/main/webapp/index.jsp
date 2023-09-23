@@ -3,7 +3,7 @@
 <%@ page import="org.forafox.web_lab_2.entities.HttpSessionDotStore" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.stream.Collectors" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     DotStore store = new HttpSessionDotStore();
@@ -142,12 +142,12 @@
             <td colspan=3>
                 <table id="results">
                     <tr>
-                        <th>X</th>
-                        <th>Y</th>
-                        <th>R</th>
-                        <th>Текущее время</th>
-                        <th>Время работы программы (мкс)</th>
-                        <th>Результат</th>
+                        <th class="results">X</th>
+                        <th class="results">Y</th>
+                        <th class="results">R</th>
+                        <th class="results">Текущее время</th>
+                        <th class="results">Время работы программы (мкс)</th>
+                        <th class="results">Результат</th>
                     </tr>
                     <%
                             for (Dot dot : dots) {

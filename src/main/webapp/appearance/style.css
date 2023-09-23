@@ -212,3 +212,7 @@ th#heading {
     align-items: center;
     justify-content: center;
 }
+.results{
+    min-width: 25px;
+    padding: 10px;
+}

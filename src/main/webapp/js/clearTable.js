@@ -5,12 +5,12 @@ function clearTable() {
         async: false,
         success: function () {
             $('#results').html(`<tr>
-                <th>X</th>
-                <th>Y</th>
-                <th>R</th>
-                <th>Текущее время</th>
-                <th>Время работы программы (мкс)</th>
-                <th>Результат</th>
+                <th class="results">X</th>
+                <th class="results">Y</th>
+                <th class="results">R</th>
+                <th class="results">Текущее время</th>
+                <th class="results">Время работы программы (мкс)</th>
+                <th class="results">Результат</th>
             </tr>`);
             $('.dot').remove();
             hasResults = false;

@@ -22,7 +22,11 @@ function validateXValue(x){
     let isXCorrect = false;
 
     if (x != null && !isNaN(x)) {
-        isXCorrect = true;
+        if((x>=-5) && (x<=5)){
+            isXCorrect=true;
+        }else{
+            validationInfo="X должен быть в диапазоне от -5 до 5!"
+        }
     } else validationInfo = "Выберите X!";
 
     addMessageToValidationPanel(validationInfo);
